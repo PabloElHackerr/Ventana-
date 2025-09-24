@@ -1,0 +1,100 @@
+=== index.html ===
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ventana Modal</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Botón para abrir el modal -->
+  <button id="abrirModalBtn">Mostrar Términos</button>
+
+  <!-- Overlay -->
+  <div id="modalOverlay" class="overlay">
+    <!-- Contenido del modal -->
+    <div class="modal">
+      <h2>Términos y Condiciones</h2>
+      <p> 
+        desea continuar hacia la siguiente pagina?
+      </p>
+      <button id="cerrarModalBtn">Cerrar</button>
+    </div>
+  </div>
+ <script src="script.js"></script>
+</body>
+</html>
+
+
+
+
+
+// Obtener referencias
+const abrirModalBtn = document.getElementById("abrirModalBtn");
+const cerrarModalBtn = document.getElementById("cerrarModalBtn");
+const modalOverlay = document.getElementById("modalOverlay");
+
+// Función para abrir el modal
+abrirModalBtn.addEventListener("click", () => {
+  modalOverlay.classList.add("visible");
+});
+
+// Función para cerrar el modal
+cerrarModalBtn.addEventListener("click", () => {
+  modalOverlay.classList.remove("visible");
+});
+
+// Bonus: cerrar modal al hacer clic en el overlay (fondo oscuro)
+modalOverlay.addEventListener("click", (e) => {
+  if (e.target === modalOverlay) {
+    modalOverlay.classList.remove("visible");
+  }
+});
+
+
+
+
+
+/* Estilo para el overlay */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.5);
+  display: none; /* Oculto por defecto */
+  justify-content: center;
+  align-items: center;
+}
+
+/* Estilo para el modal */
+.modal {
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  max-width: 400px;
+  text-align: center;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
+/* Clase visible para mostrar el overlay */
+.visible {
+  display: flex;
+}
+
+/* Botones */
+button {
+  margin-top: 15px;
+  padding: 10px 20px;
+  border: none;
+  background-color: #0077ff;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #005ec2;
+}
